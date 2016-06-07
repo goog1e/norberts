@@ -3,5 +3,8 @@
   "auth": {
     "user": "meandave",
     "password": "7837482***ewfa78ds"
-  }
+  },
+  "backupContacts": [
+    "example@email.com"
+  ]
 }
