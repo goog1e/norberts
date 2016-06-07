@@ -18,6 +18,10 @@ header > img {background: white;}
     background-size: 131%;
     background-position: 50% 58%;
 }
+.error {
+    color: red;
+    border: red;
+}
 
 #search {
     width: 500px;

@@ -18,12 +18,14 @@
     </header>
     <div class="contain">
       <div class="center">
+        {{#if error}}
+        <span class="error">{{error}}</span>
+        {{/if}}
         <section class="mw5 mw7-ns center pa3 ph5-ns">
           <input id="search" name="" type="text" placeholder="search customers" value=""/>
         </section>
-        
-        
-        <table class="">
+
+        <table>
           <tr>
             <th scope="col">Last Name</th>
             <th scope="col">First Name</th>
