@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>norberts</title>
+    <link rel="stylesheet" href="https://npmcdn.com/tachyons@4.0.0-beta.29/css/tachyons.min.css">
+    <link href="style.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <header class="bg-black-90 w-100 ph3 pv1 ph4-m ph5-l">
+      <div class="logo mv2 br-100 pa1 ba b--black-10 h2 w2 fl"></div>
+      <h1 class="mh2 f5 f4-ns fw6 white fl">Address Book</h1>
+
+      <nav class="pv3 f6 fw6 ttu tracked fr">
+        <a class="link dim white dib mr3" href="#" title="Home">Home</a>
+        <a class="link dim white dib mr3" href="#new-customer" title="New">New Customer</a>
+      </nav>
+      <div class="cf"></div>
+    </header>
+    <div class="contain">
+      <div class="center">
+        <section class="mw5 mw7-ns center pa3 ph5-ns">
+          <input id="search" name="" type="text" placeholder="search customers" value=""/>
+        </section>
+        
+        
+        <table class="">
+          <tr>
+            <th scope="col">Last Name</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">Zip Code</th>
+            <th scope="col">Email</th>
+          </tr>
+          {{#each customers}}
+          <tr class="searchable" data-index="{{lastName}}{{firstName}}{{phone}}{{address}}{{zip}}{{email}}">
+            <td>{{lastName}}</td>
+            <td>{{firstName}}</td>
+            <td>{{phone}}</td>
+            <td>{{address}}</td>
+            <td>{{zip}}</td>
+            <td>{{email}}</td>
+          </tr>
+          {{/each}}
+        </table>
+
+        <div class="measure center mv4">
+          <h3 id="new-customer" class="">Add new customer</h3>
+          <form method="POST" action="/new">
+            <div class="mb3">
+              <!-- <label for="first-name">First Name:</label> -->
+              <input name="firstName" placeholder="First Name" type="text" class="mt1 db w1 pt2 pr3 pb2 pl3 lh-title mid-gray bg-white-90 bt br bb bl bt br bb bl br2 w-100" value=""/>
+            </div>
+
+            <div class="mb3">
+              <!-- <label for="last-name">Last Name:</label> -->
+              <input name="lastName" placeholder="Last Name" type="text" class="mt1 db w1 pt2 pr3 pb2 pl3 lh-title mid-gray bg-white-90 bt br bb bl bt br bb bl br2 w-100" value=""/>
+            </div>
+
+            <div class="mb3">
+              <!-- <label for="address">Address:</label> -->
+              <input name="address" placeholder="Address" type="text" class="mt1 db w1 pt2 pr3 pb2 pl3 lh-title mid-gray bg-white-90 bt br bb bl bt br bb bl br2 w-100" value=""/>
+            </div>
+
+            <div class="mb3">
+              <!-- <label for="zip">Zip Code:</label> -->
+              <input name="zip" placeholder="Zip Code" type="zip" class="mt1 db w1 pt2 pr3 pb2 pl3 lh-title mid-gray bg-white-90 bt br bb bl bt br bb bl br2 w-50" value=""/>
+            </div>
+
+            <div class="mb3">
+              <!-- <label for="phone">Phone:</label> -->
+              <input name="phone" placeholder="Phone" type="tel" class="mt1 db w1 pt2 pr3 pb2 pl3 lh-title mid-gray bg-white-90 bt br bb bl bt br bb bl br2 w-100" required value=""/>
+            </div>
+
+            <div class="mb3">
+              <!-- <label for="email">Email:</label> -->
+              <input name="email" placeholder="Email (optional)" type="email" class="mt1 db w1 pt2 pr3 pb2 pl3 lh-title mid-gray bg-white-90 bt br bb bl bt br bb bl br2 w-100" value=""/>
+            </div>
+
+            <div class="tr">
+              <input name="" type="submit" value="Submit new customer" class="pt2 pr3 pb2 pl3 mb0 normal lh-title tc nowrap mt2 bn br2 white bg-orange"/>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer class="pv4 ph3 ph5-m ph6-l mid-gray">
+      <small class="f6 db tc">2016 <b class="ttu"></b>No Rights Reserved</small>
+    </footer>
+
+    <style id="search_style"></style>
+
+    <script type="text/javascript">
+      var searchStyle = document.getElementById('search_style');
+      document.getElementById('search').addEventListener('input', function() {
+      if (!this.value) {
+      searchStyle.innerHTML = "";
+      return;
+      }
+      // look ma, no indexOf!
+      searchStyle.innerHTML = ".searchable:not([data-index*=\"" + this.value.toLowerCase() + "\"]) { display: none; }";
+      });
+    </script>
+  </body>
+</html>

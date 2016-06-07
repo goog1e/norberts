@@ -1,0 +1,23 @@
+{
+  "name": "norberts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "basic-auth-connect": "1.0.0",
+    "body-parser": "1.15.1",
+    "express": "4.13.4",
+    "express-handlebars": "3.0.0",
+    "level": "1.4.0",
+    "morgan": "1.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "1.9.2"
+  }
+}
